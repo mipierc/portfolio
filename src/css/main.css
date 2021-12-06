@@ -1,0 +1,11 @@
+nav{
+    background-color: grey;
+}
+
+.navbar-brand, .nav-link{
+    color: aliceblue;
+}
+
+.navbar-brand:hover, .nav-link:hover{
+    color: lightblue;
+}
