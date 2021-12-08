@@ -1,9 +1,13 @@
 :root{
-    --headbg: darkblue;
-    --text: white;
-    --hover: white;
+    --headbg: white;
+    --text: black;
+    --hover: black;
     --black: black;
 
+}
+
+body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .main-header{
@@ -113,9 +117,9 @@
       padding: 0;
       width: 40px;
       height: 40px;
-      position: absolute;
-      top: 25px;
-      right: 0;
+      position: relative;
+      top: 0px;
+      left: 97.5%;
       border: none;
     }
   
@@ -128,7 +132,7 @@
     }
   
     .main-header .navbar-nav {
-      margin-top: 70px;
+      margin-top: 0px;
     }
   
     .main-header .navbar-nav li .nav-link {
@@ -139,7 +143,7 @@
   
     /**/
     .main-header .navbar-toggler .icon-bar {
-      background-color: #fff;
+      background-color: var(--black);
       margin: 0 auto 6px;
       border-radius: 0;
       width: 30px;
@@ -155,18 +159,21 @@
     }
   
     .main-header .navbar-toggler .icon-bar-1 {
-      width: 10px;
+      width: 30px;
       top: 0px;
+      border-radius: 3px;
     }
   
     .main-header .navbar-toggler .icon-bar-2 {
-      width: 16px;
+      width: 30px;
       top: 12px;
+      border-radius: 3px;
     }
   
     .main-header .navbar-toggler .icon-bar-3 {
-      width: 20px;
+      width: 30px;
       top: 21px;
+      border-radius: 3px;
     }
   
     .main-header .current .icon-bar {
@@ -188,11 +195,11 @@
     }
   
     .main-header .navbar-toggler:hover .icon-bar {
-      background-color: #fff;
+      background-color: var(--black);
     }
   
     .main-header .navbar-toggler:focus .icon-bar {
-      background-color: #fff;
+      background-color: var(--black);
     }
 
     .navbar-toggler:focus {
