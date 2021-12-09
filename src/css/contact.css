@@ -111,24 +111,11 @@ body {
   cursor: pointer;
 }
 
-.note {
-  position: absolute;
-  left: 0;
-  bottom: 10px;
-  width: 100%;
-  text-align: center;
-  font-family: Lusitana, serif;
-  font-size: 16px;
-  line-height: 21px;
-}
-.note .link {
-  color: #888;
-  text-decoration: none;
-}
-.note .link:hover {
-  text-decoration: underline;
-}
-
 @media only screen and (max-width: 666px) {
   .form-field {min-width: 295px;}
+}
+
+@media only screen and (max-width: 454px) {
+  .get-in-touch {margin-top: 5rem;}
+  .form-field {min-width: none;}
 }

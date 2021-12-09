@@ -33,8 +33,11 @@
         </div>
         <!-- /.container -->
     </header>
+<hr></hr>
+<hr></hr>
+<hr></hr>
+<hr></hr>
 
-    
     <section class="get-in-touch">
       <h1 class="title">Get in touch</h1>
       <form class="contact-form row" action="https://formspree.io/f/mayvynnb" method="POST">
@@ -62,6 +65,226 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="src/js/contact.js"></script>
+    <script>
+       $(document).ready(function () {
+    // typing animation
+    (function ($) {
+      $.fn.writeText = function (content) {
+        var contentArray = content.split(""),
+          current = 0,
+          elem = this;
+        setInterval(function () {
+          if (current < contentArray.length) {
+            elem.text(elem.text() + contentArray[current++]);
+          }
+        }, 80);
+      };
+    })(jQuery);
+  
+    // input text for typing animation
+    $("#holder").writeText("WEB DESIGNER + FRONT-END DEVELOPER");
+  
+    // initialize wow.js
+    new WOW().init();
+  
+    // Push the body and the nav over by 285px over
+    var main = function () {
+      $(".fa-bars").click(function () {
+        $(".nav-screen").animate(
+          {
+            right: "0px"
+          },
+          200
+        );
+  
+        $("body").animate(
+          {
+            right: "285px"
+          },
+          200
+        );
+      });
+  
+      // Then push them back */
+      $(".fa-times").click(function () {
+        $(".nav-screen").animate(
+          {
+            right: "-285px"
+          },
+          200
+        );
+  
+        $("body").animate(
+          {
+            right: "0px"
+          },
+          200
+        );
+      });
+  
+      $(".nav-links a").click(function () {
+        $(".nav-screen").animate(
+          {
+            right: "-285px"
+          },
+          500
+        );
+  
+        $("body").animate(
+          {
+            right: "0px"
+          },
+          500
+        );
+      });
+    };
+  
+    $(document).ready(main);
+  
+    // initiate full page scroll
+  
+    $("#fullpage").fullpage({
+      scrollBar: true,
+      responsiveWidth: 400,
+      navigation: true,
+      navigationTooltips: ["home", "about", "portfolio", "contact", "connect"],
+      anchors: ["home", "about", "portfolio", "contact", "connect"],
+      menu: "#myMenu",
+      fitToSection: false,
+  
+      afterLoad: function (anchorLink, index) {
+        var loadedSection = $(this);
+  
+        //using index
+        if (index == 1) {
+          /* add opacity to arrow */
+          $(".fa-chevron-down").each(function () {
+            $(this).css("opacity", "1");
+          });
+          $(".header-links a").each(function () {
+            $(this).css("color", "white");
+          });
+          $(".header-links").css("background-color", "transparent");
+        } else if (index != 1) {
+          $(".header-links a").each(function () {
+            $(this).css("color", "black");
+          });
+          $(".header-links").css("background-color", "white");
+        }
+  
+        //using index
+        if (index == 2) {
+          /* animate skill bars */
+          $(".skillbar").each(function () {
+            $(this)
+              .find(".skillbar-bar")
+              .animate(
+                {
+                  width: $(this).attr("data-percent")
+                },
+                2500
+              );
+          });
+        }
+      }
+    });
+  
+    // move section down one
+    $(document).on("click", "#moveDown", function () {
+      $.fn.fullpage.moveSectionDown();
+    });
+  
+    // fullpage.js link navigation
+    $(document).on("click", "#skills", function () {
+      $.fn.fullpage.moveTo(2);
+    });
+  
+    $(document).on("click", "#projects", function () {
+      $.fn.fullpage.moveTo(3);
+    });
+  
+    $(document).on("click", "#contact", function () {
+      $.fn.fullpage.moveTo(4);
+    });
+  
+    // smooth scrolling
+    $(function () {
+      $("a[href*=#]:not([href=#])").click(function () {
+        if (
+          location.pathname.replace(/^\//, "") ==
+            this.pathname.replace(/^\//, "") &&
+          location.hostname == this.hostname
+        ) {
+          var target = $(this.hash);
+          target = target.length
+            ? target
+            : $("[name=" + this.hash.slice(1) + "]");
+          if (target.length) {
+            $("html,body").animate(
+              {
+                scrollTop: target.offset().top
+              },
+              700
+            );
+            return false;
+          }
+        }
+      });
+    });
+  
+    //ajax form
+    $(function () {
+      // Get the form.
+      var form = $("#ajax-contact");
+  
+      // Get the messages div.
+      var formMessages = $("#form-messages");
+  
+      // Set up an event listener for the contact form.
+      $(form).submit(function (e) {
+        // Stop the browser from submitting the form.
+        e.preventDefault();
+  
+        // Serialize the form data.
+        var formData = $(form).serialize();
+  
+        // Submit the form using AJAX.
+        $.ajax({
+          type: "POST",
+          url: $(form).attr("action"),
+          data: formData
+        })
+          .done(function (response) {
+            // Make sure that the formMessages div has the 'success' class.
+            $(formMessages).removeClass("error");
+            $(formMessages).addClass("success");
+  
+            // Set the message text.
+            $(formMessages).text(response);
+  
+            // Clear the form.
+            $("#name").val("");
+            $("#email").val("");
+            $("#message").val("");
+          })
+          .fail(function (data) {
+            // Make sure that the formMessages div has the 'error' class.
+            $(formMessages).removeClass("success");
+            $(formMessages).addClass("error");
+  
+            // Set the message text.
+            if (data.responseText !== "") {
+              $(formMessages).text(data.responseText);
+            } else {
+              $(formMessages).text(
+                "Oops! An error occured and your message could not be sent."
+              );
+            }
+          });
+      });
+    });
+  });
+  
+    </script>
 </body>
 </html>
