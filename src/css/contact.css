@@ -38,7 +38,7 @@ body {
 }
 
 .get-in-touch {
-  margin: 0 6rem;
+  margin: -7rem 6rem;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
